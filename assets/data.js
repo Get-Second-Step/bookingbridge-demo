@@ -18,19 +18,19 @@ const isoT = (d) => d.toISOString().slice(0, 19);
 
 const TODAY = new Date(2026, 5, 28);
 const PROPERTY_NAMES = [
-  "Nalu Kai Full Estate", "Palama Huna Hale", "Anini Vista Drive Estate", "Anini Point",
-  "Secret Cove", "The Red House in Hanalei", "Hale 'Ae Kai", "Anini Beach Estate",
-  "Ikena Lani", "Hanalei Bay Hale", "Hanalei Nalu", "Sea Song",
+  "Moana Crest Estate", "Hale Kolea", "Makai Vista Estate", "Koa Point",
+  "Hidden Cove", "The Blue House at Waimea", "Hale Nai'a", "Kai Nalu Beach Estate",
+  "Lani Ridge", "Waimea Bay Hale", "Nalu Moku", "Sea Glass",
 ];
 const CAMPAIGNS = [
-  { id: "39097788", name: "Pure Kauai Main (Geo)" },
+  { id: "39097788", name: "Kai Nalu Main (Geo)" },
   { id: "21399528661", name: "Brand" },
-  { id: "44120355", name: "Luxury Villas Kauai" },
-  { id: "51883204", name: "Anini Beach Prospecting" },
+  { id: "44120355", name: "Luxury Villas Hawaii" },
+  { id: "51883204", name: "North Shore Prospecting" },
   { id: "60221947", name: "Competitor Conquest" },
 ];
 const FIRST = ["Aliona", "Grazia", "Stacey", "Aoife", "Chris", "Marco", "Priya", "Devon", "Lena", "Hugo", "Mara", "Theo", "Nina", "Owen", "Carla", "Raj"];
-const LAST = ["Kazakova", "Amore", "Volkov", "Walsh", "Reed", "Bianchi", "Shah", "Murphy", "Park", "Lindqvist", "Quinn", "Nakamura"];
+const LAST = ["Sokolova", "Romano", "Volkov", "Walsh", "Reed", "Bianchi", "Shah", "Murphy", "Park", "Lindqvist", "Quinn", "Nakamura"];
 const SOURCES = ["google", "google", "google", "direct", "referral", "bing"];
 const EVIDENCE_DEF = {
   gclid: { label: "Click ID verified", cls: "proven", ad: true },

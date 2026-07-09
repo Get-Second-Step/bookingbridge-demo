@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <script>
+    // Demo gate: the landing's login sets this flag. No flag, no dashboard.
+    if (sessionStorage.getItem('bb_demo_auth') !== '1') location.replace('/login.html');
+  </script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BookingBridge — Attribution Intelligence</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/theme.css?v=3" />
+  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/alasql@4/dist/alasql.min.js"></script>
+</head>
+<body>
+  <div style="background:#171410;color:#F5F1E8;font:500 12px/1 'Spline Sans Mono',ui-monospace,monospace;letter-spacing:.08em;text-transform:uppercase;display:flex;justify-content:center;align-items:center;gap:18px;padding:8px 14px">
+    <span>Demo environment · illustrative data</span>
+    <a href="/" style="color:#E8DCC3;text-decoration:underline;text-underline-offset:3px" onclick="sessionStorage.removeItem('bb_demo_auth')">Log out</a>
+  </div>
+  <div class="app">
+    <!-- ===================== Sidebar ===================== -->
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="mark" id="brandMark">
+          <!-- placeholder logo: abstract bridge/wave -->
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 16c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 11c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".55"/>
+          </svg>
+        </div>
+        <div class="name"><span id="brandName">BookingBridge</span><small>Attribution</small></div>
+      </div>
+
+      <nav class="nav" id="nav">
+        <a data-view="home" class="active">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg>
+          Home
+        </a>
+        <a data-view="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>
+          Attribution Dashboard
+        </a>
+        <a data-view="explore">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" opacity=".0"/><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          Explore
+        </a>
+        <a data-view="bookings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+          Bookings <span class="tag">356</span>
+        </a>
+        <a data-view="campaigns">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
+          Campaigns
+        </a>
+
+        <div class="group-label">Workspace</div>
+        <a data-view="collections">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+          Collections <span class="tag" id="navSavedCount"></span>
+        </a>
+        <a data-view="browse">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
+          Browse data
+        </a>
+        <a data-view="settings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 14.1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 7l-.1-.1A2 2 0 1 1 7.3 4.1l.1.1A1.6 1.6 0 0 0 9 4.6h.1A1.6 1.6 0 0 0 10 3.1V3a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 17 4.6a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.6 1.6 0 0 0 21 9.9V10a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
+          Appearance
+        </a>
+      </nav>
+
+      <div class="foot">
+        <div class="avatar">SR</div>
+        <div class="who">Second Step<small>Workspace owner</small></div>
+      </div>
+    </aside>
+
+    <!-- ===================== Main ===================== -->
+    <div class="main">
+      <header class="topbar">
+        <div class="title" id="topTitle">Home<small id="topSub">Welcome back</small></div>
+        <div class="search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
+          <input placeholder="Search dashboards, bookings, campaigns…" />
+        </div>
+        <div class="segmented" id="rangeCtl">
+          <button data-range="30">30d</button>
+          <button data-range="90">90d</button>
+          <button data-range="120" class="on">120d</button>
+          <button data-range="365">1y</button>
+        </div>
+        <button class="btn icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
+        </button>
+        <div class="newmenu">
+          <button class="btn primary" id="newBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New</button>
+          <div class="menu" id="newMenuPanel" hidden>
+            <a data-new="explore"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Question</a>
+            <a data-new="sql"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg>SQL query</a>
+            <a data-new="dashboard-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>Dashboard</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <!-- views are injected / toggled by app.js -->
+        <section class="view active" id="view-home"></section>
+        <section class="view" id="view-dashboard"></section>
+        <section class="view" id="view-explore"></section>
+        <section class="view" id="view-sql"></section>
+        <section class="view" id="view-collections"></section>
+        <section class="view" id="view-question"></section>
+        <section class="view" id="view-bookings"></section>
+        <section class="view" id="view-campaigns"></section>
+        <section class="view" id="view-browse"></section>
+        <section class="view" id="view-settings"></section>
+      </main>
+    </div>
+  </div>
+
+  <script src="/assets/data.js?v=3"></script>
+  <script src="/assets/app.js?v=3"></script>
+</body>
+</html>

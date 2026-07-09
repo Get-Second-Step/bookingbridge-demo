@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Log in — BookingBridge demo</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FFFFFF'/><rect x='2' y='2' width='28' height='28' fill='none' stroke='%23171410' stroke-width='2'/><path d='M9 21 L14 12 L18 17 L23 9' stroke='%23B23A2E' stroke-width='2.2' fill='none' stroke-linecap='square'/></svg>">
+<link rel="stylesheet" href="assets/lead.css">
+<style>
+  .login-page { min-height: 100vh; display: flex; flex-direction: column; background: var(--warm); }
+  .login-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+  .login-card { width: 100%; max-width: 400px; background: var(--white); border: 1px solid var(--rule); padding: 40px 36px 32px; }
+  .login-card h1 { font-size: 24px; letter-spacing: -0.01em; margin: 0 0 6px; color: var(--ink); }
+  .login-card .lc-sub { color: var(--ink-soft); font-size: 14.5px; line-height: 1.55; margin: 0 0 26px; }
+  .login-form { display: flex; flex-direction: column; gap: 16px; }
+  .lc-hint { margin-top: 18px; padding: 10px 12px; background: var(--red-soft); border: 1px solid var(--rule-light); font-family: var(--mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--ink-soft); }
+  .lc-hint b { color: var(--ink); }
+  .login-err { display: none; color: var(--red); font-size: 13px; margin: 0; }
+  .login-err.show { display: block; }
+  .login-foot { text-align: center; padding: 18px; font-family: var(--mono); font-size: 11px; color: var(--faint); }
+  .login-foot a { color: var(--ink-soft); }
+  .lc-mark { display: flex; align-items: center; gap: 9px; margin-bottom: 26px; font-weight: 650; color: var(--ink); }
+  .lc-mark svg { width: 26px; height: 26px; }
+</style>
+</head>
+<body>
+<div class="login-page">
+  <div class="login-main">
+    <div class="login-card">
+      <a class="lc-mark" href="/" aria-label="Back to the BookingBridge page" style="text-decoration:none">
+        <svg viewBox="0 0 32 32"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21 L14 12 L18 17 L23 9" stroke="#B23A2E" stroke-width="2.2" fill="none" stroke-linecap="square"/></svg>
+        BookingBridge
+      </a>
+      <h1>Open the demo</h1>
+      <p class="lc-sub">The full dashboard, running on illustrative data. Nothing here is a real client's number.</p>
+      <form class="login-form" id="loginForm" novalidate>
+        <div class="rf-field">
+          <label for="l-user">Username</label>
+          <input id="l-user" name="username" type="text" autocomplete="username" required>
+        </div>
+        <div class="rf-field">
+          <label for="l-pass">Password</label>
+          <input id="l-pass" name="password" type="password" autocomplete="current-password" required>
+        </div>
+        <p class="login-err" id="loginErr">That is not it. The demo credentials are printed just below.</p>
+        <button class="cta cta-lg cta-full" type="submit">Log in</button>
+      </form>
+      <p class="lc-hint">Demo credentials &nbsp;·&nbsp; username <b>admin</b> &nbsp;·&nbsp; password <b>admin</b></p>
+    </div>
+  </div>
+  <div class="login-foot">BookingBridge · built by <a href="https://getsecondstep.com">Second Step</a></div>
+</div>
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var u = document.getElementById('l-user').value.trim().toLowerCase();
+    var p = document.getElementById('l-pass').value.trim();
+    if (u === 'admin' && p === 'admin') {
+      sessionStorage.setItem('bb_demo_auth', '1');
+      location.href = '/app/';
+    } else {
+      document.getElementById('loginErr').classList.add('show');
+    }
+  });
+</script>
+</body>
+</html>

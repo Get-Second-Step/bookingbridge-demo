@@ -241,7 +241,7 @@
     $("#view-home").innerHTML = `
       <div class="hero">
         <div class="glyph"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M2 16c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4"/><path d="M2 11c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4" opacity=".55"/></svg></div>
-        <div><h1>Good to see you, Shivendra</h1><p>Pure Kauai attribution at a glance. <span class="mock-flag">● demo data</span></p></div>
+        <div><h1>Good to see you, Shivendra</h1><p>Kai Nalu Villas attribution at a glance. <span class="mock-flag">● demo data</span></p></div>
       </div>
       <div class="grid kpis stagger" style="grid-template-columns:repeat(3,1fr)">
         ${kpiCard("Proven revenue", I.rev, usd(d.kpis.provenRevenue), "", `${delta(d.kpis.deltas.revenue)} vs prev ${RANGE}d`)}
@@ -385,7 +385,7 @@
       ["identities", "193 rows", "Email / phone identity graph"],
     ];
     $("#view-browse").innerHTML = `
-      <div class="page-head"><div><h1>Browse data</h1><p>BookingBridge (Pure Kauai) · SQLite</p></div></div>
+      <div class="page-head"><div><h1>Browse data</h1><p>BookingBridge (Kai Nalu Villas) · SQLite</p></div></div>
       <div class="grid cols-3 stagger">${tables.map(([n, c, desc]) => `
         <div class="card hover tile">
           <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg></div>
@@ -677,7 +677,7 @@
   const RENDER = { home: renderHome, dashboard: renderDashboard, explore: renderExplore, sql: () => renderSQL(), collections: renderCollections, question: () => { if (LAST_Q) openQuestion(LAST_Q); }, bookings: renderBookings, campaigns: renderCampaigns, browse: renderBrowse, settings: renderSettings };
   const TITLES = {
     home: ["Home", "Welcome back"],
-    dashboard: ["Attribution Dashboard", "Pure Kauai · Google Ads"],
+    dashboard: ["Attribution Dashboard", "Kai Nalu Villas · Google Ads"],
     explore: ["Explore", "Ask a question"],
     sql: ["SQL editor", "Run queries"],
     collections: ["Collections", "Saved questions"],

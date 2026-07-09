@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookingBridge — Reconciliation File BB-2026-07-A</title>
+<meta name="description" content="A reconciliation file on the bookings your Google Ads cannot prove. Deterministic attribution for vacation rental managers. Request the audit of your own account.">
+<meta property="og:title" content="BookingBridge — Reconciliation File">
+<meta property="og:description" content="The bookings your Google Ads cannot prove, examined. Request the audit of your own account.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FBFAF6'/><rect x='2' y='2' width='28' height='28' fill='none' stroke='%231A1712' stroke-width='2'/><path d='M9 21 L14 12 L18 17 L23 9' stroke='%23B23A2E' stroke-width='2.2' fill='none' stroke-linecap='square'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- slim file-reference bar, appears after the letterhead scrolls away -->
+<div class="filebar" id="filebar" aria-hidden="true">
+  <span class="fb-ref">BB-2026-07-A · Reconciliation file</span>
+  <a href="#request">Request the audit of your account</a>
+</div>
+
+<main class="desk">
+  <article class="sheet" id="top">
+
+    <!-- ============ LETTERHEAD ============ -->
+    <header class="letterhead">
+      <div class="lh-row">
+        <div class="lh-issuer">
+          <span class="lh-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21 L14 12 L18 17 L23 9" stroke="#B23A2E" stroke-width="2.2" fill="none" stroke-linecap="square"/></svg>
+          </span>
+          <div>
+            <span class="lh-name">BookingBridge</span>
+            <span class="lh-sub">An instrument of record · built by Second Step</span>
+          </div>
+        </div>
+        <table class="lh-meta">
+          <tbody>
+            <tr><th scope="row">File no.</th><td>BB-2026-07-A</td></tr>
+            <tr><th scope="row">Issued</th><td>July 2026</td></tr>
+            <tr><th scope="row">Status</th><td><span class="status-open">OPEN — UNRECONCILED</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="lh-re">
+        <p class="re-line"><span class="re-label">Re:</span> The bookings your Google&nbsp;Ads cannot prove</p>
+        <p class="re-prepared"><span class="re-label">Prepared for:</span> the owner of a vacation rental company running Google&nbsp;Ads with an off-site booking checkout</p>
+      </div>
+    </header>
+
+    <!-- ============ 1. SUMMARY OF FINDINGS ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">1</span>Summary of findings</h2>
+      <ol class="findings">
+        <li><span class="f-no">1.1</span>Google Ads keeps a record of clicks. Your property management system keeps a record of bookings. On most vacation rental websites, no record connects the two.</li>
+        <li><span class="f-no">1.2</span>The disconnect occurs at checkout, where the guest leaves your domain for the booking engine and Google's click ID is destroyed in transit. <span class="xref">(Exhibit&nbsp;A)</span></li>
+        <li><span class="f-no">1.3</span>Revenue that originated with a paid click is therefore recorded as <span class="mono-inline">Direct / (none)</span>. In the account examined for this file, 74% of booking revenue was filed this way.<a class="fn-ref" href="#fn1" id="ref1"><sup>1</sup></a></li>
+        <li><span class="f-no">1.4</span>The condition is repairable. Where the click record is captured first-party and joined to the booking ledger, provable revenue emerges. <span class="xref">(Exhibits&nbsp;B and&nbsp;C)</span></li>
+      </ol>
+      <p class="action-required">Action available to the reader: the same examination can be performed on your account, without charge. <a href="#request">See section&nbsp;6, Request of audit.</a></p>
+    </section>
+
+    <!-- ============ 2. EXHIBIT A ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">2</span>Exhibit A — where the record breaks</h2>
+      <figure class="figure">
+        <div class="fig-frame" role="img" aria-label="Figure 1. The guest moves from the Google ad to your website, where the click ID is alive, then to the booking checkout on another domain, where the click ID is destroyed. The booking is then recorded as Direct.">
+          <div class="hop">
+            <div class="hop-node">
+              <span class="hn-label">Google ad</span>
+              <span class="hn-note mono">click ID issued</span>
+            </div>
+            <div class="hop-arrow" aria-hidden="true">→</div>
+            <div class="hop-node">
+              <span class="hn-label">Your website</span>
+              <span class="hn-note mono">click ID alive</span>
+            </div>
+            <div class="hop-arrow broken" aria-hidden="true">→<span class="hop-x">✕</span></div>
+            <div class="hop-node lost">
+              <span class="hn-label">Booking checkout <em>(other domain)</em></span>
+              <span class="hn-note mono">click ID destroyed</span>
+            </div>
+          </div>
+          <div class="hop-verdict mono">booking recorded as: Direct / (none)</div>
+        </div>
+        <figcaption><span class="fig-no">Figure 1.</span> The cross-domain hop. Google reports the click, the PMS reports the booking, and nothing connects the two. The ads may be working; the proof does not survive the journey.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ 3. EXHIBIT B ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">3</span>Exhibit B — one booking, fully evidenced</h2>
+      <p class="sec-lede">Reproduced from the first deployed account: the complete evidence trail of a single reservation. Identifiers are redacted; amounts are not.<a class="fn-ref" href="#fn2" id="ref2"><sup>2</sup></a></p>
+
+      <div class="trail">
+        <div class="trail-head mono">
+          <span>Booking file ····-7219 · <span class="redact" aria-label="redacted">██████ ███████</span>, party of 6</span>
+          <span class="tier-stamp">TIER: VERIFIED</span>
+        </div>
+        <table class="trail-table">
+          <tbody>
+            <tr>
+              <td class="tt-date mono">Jun 05</td>
+              <td class="tt-event">Guest arrives via Google Ads, Brand campaign. Click ID captured first-party on landing.</td>
+              <td class="tt-obj mono">gclid&nbsp;Cj0KCQjw<span class="redact sm">██████</span></td>
+            </tr>
+            <tr>
+              <td class="tt-date mono">Jun 05</td>
+              <td class="tt-event">Inquiry submitted for a beachfront estate. Identity recorded and normalized.</td>
+              <td class="tt-obj mono"><span class="redact sm">████████</span>@<span class="redact sm">█████</span>.com</td>
+            </tr>
+            <tr>
+              <td class="tt-date mono">Jun 09</td>
+              <td class="tt-event">Reservation confirmed in the property management system. Order total recorded.</td>
+              <td class="tt-obj mono">$37,219.00</td>
+            </tr>
+            <tr>
+              <td class="tt-date mono">Jun 09</td>
+              <td class="tt-event">Matcher joins the click record to the confirmation on click ID + identity. No inference used.</td>
+              <td class="tt-obj mono">MATCHED · VERIFIED</td>
+            </tr>
+            <tr class="tt-contrast">
+              <td class="tt-date mono">—</td>
+              <td class="tt-event">The same booking, as recorded by analytics before repair:</td>
+              <td class="tt-obj mono strike">Direct / (none)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="sec-note">This is one of three reservations, together worth $100,646, proven against ad clicks in this account. All three had been filed under Direct.</p>
+    </section>
+
+    <!-- ============ 4. EXHIBIT C ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">4</span>Exhibit C — the reconciliation</h2>
+      <p class="sec-lede">The account's Google Ads position for March through June, stated two ways: as Google models it, and as the captured evidence proves it.</p>
+
+      <table class="ledger">
+        <tbody>
+          <tr>
+            <th scope="row">Google Ads spend, as billed</th>
+            <td class="lg-amt mono">$28,038.00</td>
+            <td class="lg-basis mono">invoiced</td>
+          </tr>
+          <tr class="lg-dim">
+            <th scope="row">Booking revenue Google attributes to the ads</th>
+            <td class="lg-amt mono">$514,917.00</td>
+            <td class="lg-basis mono">modeled, unverifiable<a class="fn-ref" href="#fn3" id="ref3"><sup>3</sup></a></td>
+          </tr>
+          <tr class="lg-strong">
+            <th scope="row">Booking revenue proven with captured evidence</th>
+            <td class="lg-amt mono">$100,646.49</td>
+            <td class="lg-basis mono">3 bookings, deterministic</td>
+          </tr>
+          <tr>
+            <th scope="row">Booking revenue accounted for, tier by tier</th>
+            <td class="lg-amt mono">100%</td>
+            <td class="lg-basis mono">nothing counted twice</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="ledger-note">The two revenue figures will never agree. Only one of them survives scrutiny from an owner, a partner, or an accountant. Note also the repair record: before intervention this account captured the click ID on 0% of ad visits; within four weeks of one corrective deployment, 37.5% of the week's visits carried it. The working target is 60%.</p>
+    </section>
+
+    <!-- ============ 5. THE INSTRUMENT ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">5</span>The instrument</h2>
+      <p class="sec-body">BookingBridge is the system that produced the exhibits above. It is deliberately small: one tag on your website captures the click record first-party; the service reads spend from Google Ads and confirmations from your property management system every fifteen minutes; a matcher joins the two ledgers and labels every match with the strength of its evidence. It produces the one line this file is built around, spend against proven revenue, continuously.</p>
+      <dl class="tier-defs">
+        <div class="td-row"><dt class="mono">VERIFIED</dt><dd>Click ID captured and matched to the confirmed booking.</dd></div>
+        <div class="td-row"><dt class="mono">LIKELY</dt><dd>The guest's email or phone bridges an ad-tracked inquiry to the booking.</dd></div>
+        <div class="td-row"><dt class="mono">ASSISTED</dt><dd>Ad parameters present on the visit; the click ID itself unrecoverable.</dd></div>
+        <div class="td-row"><dt class="mono">UNKNOWN</dt><dd>No ad evidence. Never counted, always disclosed.</dd></div>
+      </dl>
+      <p class="sec-body plain-statement">When a booking cannot be proven to have come from your ads, the file says so. That is the entire point.</p>
+    </section>
+
+    <!-- ============ 6. REQUEST OF AUDIT ============ -->
+    <section class="doc-section" id="request">
+      <h2 class="sec-head"><span class="sec-no">6</span>Request of audit</h2>
+      <p class="sec-body">We will prepare this file for your own account: the share of your booking revenue sitting in Direct, whether your checkout destroys the click ID and where, your capture rate today, and the repair plan in order. Prepared by a person with the instrument, returned within five business days, without charge or obligation. One report, no drip campaign.</p>
+
+      <form class="req-form" id="leakForm" novalidate>
+        <div class="req-grid">
+          <div class="req-field">
+            <label for="f-name">Name of requester</label>
+            <input id="f-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="req-field">
+            <label for="f-email">Work email</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+            <span class="req-err">A valid email is required to return the file.</span>
+          </div>
+          <div class="req-field">
+            <label for="f-site">Company website</label>
+            <input id="f-site" name="website" type="text" inputmode="url" required>
+            <span class="req-err">The audit is performed against your website.</span>
+          </div>
+          <div class="req-field">
+            <label for="f-spend">Monthly Google Ads spend</label>
+            <select id="f-spend" name="spend" required>
+              <option value="" selected disabled>Select range</option>
+              <option>Under $2,000</option>
+              <option>$2,000 – $10,000</option>
+              <option>$10,000 – $30,000</option>
+              <option>Over $30,000</option>
+              <option>Not running ads yet</option>
+            </select>
+          </div>
+        </div>
+        <div class="req-actions">
+          <button class="req-submit" type="submit">Submit request</button>
+          <span class="req-fine mono">First-party only. Your details are used to prepare the file and for nothing else.</span>
+        </div>
+        <div class="req-done" hidden>
+          <p class="rd-head mono">REQUEST LOGGED</p>
+          <p>Received. A person will reply within one business day to confirm the particulars, and the file will follow within five.</p>
+        </div>
+      </form>
+    </section>
+
+    <!-- ============ 7. ANTICIPATED QUESTIONS ============ -->
+    <section class="doc-section">
+      <h2 class="sec-head"><span class="sec-no">7</span>Anticipated questions</h2>
+      <dl class="qa-list">
+        <div class="qa-row">
+          <dt>Is this not what GA4 already does?</dt>
+          <dd>No. GA4 loses the click at the checkout hop and models what it does report. This instrument captures the click first-party and counts only what it can prove.</dd>
+        </div>
+        <div class="qa-row">
+          <dt>Does it replace the agency running our ads?</dt>
+          <dd>No. It is the referee, not a player. Whoever runs the ads keeps running them; the file states what they can be proven to have booked.</dd>
+        </div>
+        <div class="qa-row">
+          <dt>Which property management systems are supported?</dt>
+          <dd>Hostfully, natively, today. The matcher is system-agnostic by design; adapters follow demand. Name yours in the request.</dd>
+        </div>
+        <div class="qa-row">
+          <dt>Is a developer required?</dt>
+          <dd>No. Installation is one tag in Google Tag Manager, done with you, typically in under fifteen minutes.</dd>
+        </div>
+        <div class="qa-row">
+          <dt>What of bookings made by phone or email?</dt>
+          <dd>Phone and email are first-class identities in the matcher. A guest who clicks the ad and books by phone two weeks later can still be connected, and the match is labeled accordingly.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <!-- ============ SIGNATURE ============ -->
+    <section class="signoff">
+      <div class="sig-block">
+        <p class="sig-line">Prepared and maintained by</p>
+        <p class="sig-name">BookingBridge</p>
+        <p class="sig-sub">an instrument built by <a href="https://getsecondstep.com">Second Step</a> · July 2026</p>
+      </div>
+      <div class="stamp" aria-hidden="true">
+        <svg viewBox="0 0 160 160">
+          <defs><path id="stamp-arc" d="M 80 80 m -58 0 a 58 58 0 1 1 116 0 a 58 58 0 1 1 -116 0"/></defs>
+          <circle cx="80" cy="80" r="74" fill="none" stroke="currentColor" stroke-width="3"/>
+          <circle cx="80" cy="80" r="46" fill="none" stroke="currentColor" stroke-width="1.5"/>
+          <text class="stamp-text"><textPath href="#stamp-arc">DETERMINISTIC · NO MODELED NUMBERS · NOTHING COUNTED TWICE ·</textPath></text>
+          <text x="80" y="76" text-anchor="middle" class="stamp-center">BB</text>
+          <text x="80" y="94" text-anchor="middle" class="stamp-center-sm">EST. 2026</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ============ FOOTNOTES ============ -->
+    <footer class="footnotes">
+      <hr class="fn-rule">
+      <ol>
+        <li id="fn1"><a class="fn-back" href="#ref1">1.</a> Analytics audit of a Kaua‘i luxury villa agency, March–June 2026. Client name withheld pending approval: <span class="redact sm">██████████</span>.</li>
+        <li id="fn2"><a class="fn-back" href="#ref2">2.</a> Trail abridged for print. The full record, including campaign, matcher reasoning, and timestamps, is available in the account's live file.</li>
+        <li id="fn3"><a class="fn-back" href="#ref3">3.</a> Google Ads includes modeled cross-device and view-through conversions. These may well be real; they cannot be independently verified, which is a different thing.</li>
+      </ol>
+      <div class="doc-foot mono">
+        <span>BookingBridge Reconciliation File · BB-2026-07-A</span>
+        <span>Page 1 of 1</span>
+        <span>© 2026 Second Step</span>
+      </div>
+    </footer>
+
+  </article>
+</main>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

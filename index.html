@@ -1,118 +1,243 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BookingBridge — Attribution Intelligence</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/theme.css?v=2" />
-  <script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/alasql@4/dist/alasql.min.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BookingBridge — Find the booking revenue hiding in Direct</title>
+<meta name="description" content="A free written audit for vacation rental managers: how much of your booking revenue analytics files as Direct, where your checkout destroys Google's click ID, and how to repair it.">
+<meta property="og:title" content="BookingBridge — the free attribution audit">
+<meta property="og:description" content="Find out how much of your booking revenue is hiding in Direct. Free written audit, returned in five business days.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23FFFFFF'/><rect x='2' y='2' width='28' height='28' fill='none' stroke='%23171410' stroke-width='2'/><path d='M9 21 L14 12 L18 17 L23 9' stroke='%23B23A2E' stroke-width='2.2' fill='none' stroke-linecap='square'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/lead.css">
 </head>
 <body>
-  <div class="app">
-    <!-- ===================== Sidebar ===================== -->
-    <aside class="sidebar">
-      <div class="brand">
-        <div class="mark" id="brandMark">
-          <!-- placeholder logo: abstract bridge/wave -->
-          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2 16c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-            <path d="M2 11c3.2 0 3.2-4 6.4-4s3.2 4 6.4 4 3.2-4 6.4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".55"/>
-          </svg>
-        </div>
-        <div class="name"><span id="brandName">BookingBridge</span><small>Attribution</small></div>
-      </div>
 
-      <nav class="nav" id="nav">
-        <a data-view="home" class="active">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9v11h14V9"/></svg>
-          Home
-        </a>
-        <a data-view="dashboard">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>
-          Attribution Dashboard
-        </a>
-        <a data-view="explore">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M3 12h18" opacity=".0"/><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
-          Explore
-        </a>
-        <a data-view="bookings">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
-          Bookings <span class="tag">356</span>
-        </a>
-        <a data-view="campaigns">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M7 14l4-4 3 3 5-6"/></svg>
-          Campaigns
-        </a>
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="wordmark" href="#top" aria-label="BookingBridge home">
+      <span class="wm-glyph" aria-hidden="true">
+        <svg viewBox="0 0 32 32"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9 21 L14 12 L18 17 L23 9" stroke="#B23A2E" stroke-width="2.2" fill="none" stroke-linecap="square"/></svg>
+      </span>
+      <span class="wm-text">BookingBridge</span>
+    </a>
+    <nav class="nav-right" aria-label="Primary">
+      <a class="nav-link" href="file.html">The specimen file</a>
+      <a class="nav-link" href="#request">Request the free audit</a>
+      <a class="cta" href="login.html">Log in</a>
+    </nav>
+  </div>
+</header>
 
-        <div class="group-label">Workspace</div>
-        <a data-view="collections">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
-          Collections <span class="tag" id="navSavedCount"></span>
-        </a>
-        <a data-view="browse">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/></svg>
-          Browse data
-        </a>
-        <a data-view="settings">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-2.7 1.1V21a2 2 0 1 1-4 0v-.1A1.6 1.6 0 0 0 7 19.4a1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1A1.6 1.6 0 0 0 3 14.1H3a2 2 0 1 1 0-4h.1A1.6 1.6 0 0 0 4.6 7l-.1-.1A2 2 0 1 1 7.3 4.1l.1.1A1.6 1.6 0 0 0 9 4.6h.1A1.6 1.6 0 0 0 10 3.1V3a2 2 0 1 1 4 0v.1A1.6 1.6 0 0 0 17 4.6a1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1A1.6 1.6 0 0 0 21 9.9V10a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg>
-          Appearance
-        </a>
-      </nav>
+<main id="top">
 
-      <div class="foot">
-        <div class="avatar">SR</div>
-        <div class="who">Second Step<small>Workspace owner</small></div>
-      </div>
-    </aside>
-
-    <!-- ===================== Main ===================== -->
-    <div class="main">
-      <header class="topbar">
-        <div class="title" id="topTitle">Home<small id="topSub">Welcome back</small></div>
-        <div class="search">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3-3"/></svg>
-          <input placeholder="Search dashboards, bookings, campaigns…" />
-        </div>
-        <div class="segmented" id="rangeCtl">
-          <button data-range="30">30d</button>
-          <button data-range="90">90d</button>
-          <button data-range="120" class="on">120d</button>
-          <button data-range="365">1y</button>
-        </div>
-        <button class="btn icon-btn" id="themeToggle" title="Toggle theme" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
-        </button>
-        <div class="newmenu">
-          <button class="btn primary" id="newBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>New</button>
-          <div class="menu" id="newMenuPanel" hidden>
-            <a data-new="explore"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>Question</a>
-            <a data-new="sql"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg>SQL query</a>
-            <a data-new="dashboard-new"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>Dashboard</a>
-          </div>
-        </div>
-      </header>
-
-      <main class="content">
-        <!-- views are injected / toggled by app.js -->
-        <section class="view active" id="view-home"></section>
-        <section class="view" id="view-dashboard"></section>
-        <section class="view" id="view-explore"></section>
-        <section class="view" id="view-sql"></section>
-        <section class="view" id="view-collections"></section>
-        <section class="view" id="view-question"></section>
-        <section class="view" id="view-bookings"></section>
-        <section class="view" id="view-campaigns"></section>
-        <section class="view" id="view-browse"></section>
-        <section class="view" id="view-settings"></section>
-      </main>
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="eyebrow rv">For vacation rental managers running Google Ads</p>
+    <h1 class="rv" style="--d:1">Your best bookings are hiding in&nbsp;Direct.</h1>
+    <p class="hero-sub rv" style="--d:2">The free BookingBridge audit shows how much of your booking revenue your analytics files under Direct, where your checkout destroys Google's click ID, and how to repair it. Returned as a written file within five business days.</p>
+    <div class="hero-cta rv" style="--d:3">
+      <a class="cta cta-lg" href="login.html">Open the live demo</a>
+      <a class="quiet-link" href="file.html">Read a specimen file first<span aria-hidden="true">&nbsp;→</span></a>
     </div>
+    <p class="hero-fine mono rv" style="--d:4">Demo login: admin / admin. The audit itself: no charge, no obligation.</p>
   </div>
 
-  <script src="assets/data.js?v=2"></script>
-  <script src="assets/app.js?v=2"></script>
+  <div class="proofstrip mono" role="note" aria-label="Numbers from the first deployed account">
+    <div class="wrap ps-inner">
+      <span class="ps-lead">From our first deployed account&nbsp;·&nbsp;Mar&ndash;Jun 2026</span>
+      <span class="ps-item"><b>$28,038</b> spend examined</span>
+      <span class="ps-item"><b>$100,646</b> proven across 3 bookings</span>
+      <span class="ps-item"><b>100%</b> of revenue accounted for</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROBLEM ============ -->
+<section class="problem">
+  <div class="wrap problem-grid">
+    <div class="pr-stat rv">
+      <span class="pr-num">74<i>%</i></span>
+      <span class="pr-caption mono">of booking revenue filed as Direct or Unassigned in the account we audited first<sup>1</sup></span>
+    </div>
+    <div class="pr-copy rv" style="--d:1">
+      <h2>The proof dies at your checkout.</h2>
+      <p>Your website hands the guest to a booking engine on another domain, and Google's click ID does not survive the hop. Google reports the click. Your PMS reports the booking. Nothing connects the two, so the revenue is filed under <span class="chip">Direct / (none)</span> and your ad account looks like it books almost nothing.</p>
+      <p>The ads may be working. The proof is missing. The audit tells you which, in writing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHAT THE AUDIT CONTAINS ============ -->
+<section class="contents">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">What the audit contains</p>
+      <h2>Four findings. Written in plain English. Yours to&nbsp;keep.</h2>
+    </div>
+    <ol class="items">
+      <li class="item rv">
+        <span class="item-no mono">01</span>
+        <div>
+          <h3>Your Direct share, in dollars</h3>
+          <p>How much of your booking revenue is currently filed under Direct or Unassigned, quantified against your real numbers.</p>
+        </div>
+      </li>
+      <li class="item rv" style="--d:1">
+        <span class="item-no mono">02</span>
+        <div>
+          <h3>The exact point of the break</h3>
+          <p>Whether your checkout hop destroys the click ID, and precisely where in the guest's journey the record dies.</p>
+        </div>
+      </li>
+      <li class="item rv" style="--d:2">
+        <span class="item-no mono">03</span>
+        <div>
+          <h3>Your capture rate, measured</h3>
+          <p>The share of your ad visits that currently carry a recoverable click ID, held against the 60% you should demand.</p>
+        </div>
+      </li>
+      <li class="item rv" style="--d:3">
+        <span class="item-no mono">04</span>
+        <div>
+          <h3>The repair plan, in order</h3>
+          <p>What to fix first and what it recovers, written so you can hand it directly to whoever runs your ads.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ THE SPECIMEN ============ -->
+<section class="specimen">
+  <div class="wrap sp-grid">
+    <div class="sp-copy rv">
+      <p class="eyebrow">The deliverable</p>
+      <h2>You receive a file, not a slide&nbsp;deck.</h2>
+      <p>Every audit is returned as a reconciliation file: numbered findings, exhibits, a ledger, and footnotes. The kind of document that survives being forwarded to a business partner or an accountant. We keep a public specimen so you can judge the standard before you ask for one.</p>
+      <a class="quiet-link" href="file.html">Read the specimen file<span aria-hidden="true">&nbsp;→</span></a>
+    </div>
+    <a class="sp-thumb rv" style="--d:1" href="file.html" aria-label="Open the specimen reconciliation file">
+      <span class="doc">
+        <span class="doc-head">
+          <span class="doc-brand">
+            <svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1.5" y="1.5" width="29" height="29" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M9 21 L14 12 L18 17 L23 9" stroke="#B23A2E" stroke-width="2.4" fill="none" stroke-linecap="square"/></svg>
+            BookingBridge
+          </span>
+          <span class="doc-status mono">OPEN — UNRECONCILED</span>
+        </span>
+        <span class="doc-re">Re: The bookings your Google Ads cannot prove</span>
+        <span class="doc-rule"></span>
+        <span class="doc-line mono"><i>1.1</i> Google Ads keeps a record of clicks. Your PMS keeps a record of bookings. No record connects the two.</span>
+        <span class="doc-line mono"><i>1.2</i> The disconnect occurs at checkout, where the click ID is destroyed in transit. <u>(Exhibit A)</u></span>
+        <span class="doc-line mono"><i>1.3</i> Revenue is therefore recorded as Direct / (none). In the account examined, 74% was filed this way.</span>
+        <span class="doc-ledger mono">
+          <span>Proven with captured evidence</span>
+          <span class="dl-amt">$100,646.49</span>
+        </span>
+        <span class="doc-foot mono">BB-2026-07-A · Page 1 of 1</span>
+      </span>
+      <span class="sp-thumb-caption mono">Specimen · file no. BB-2026-07-A</span>
+    </a>
+  </div>
+</section>
+
+<!-- ============ PROCESS ============ -->
+<section class="process">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">How it goes</p>
+      <h2>Ten minutes of yours. Five days of&nbsp;ours.</h2>
+    </div>
+    <div class="steps">
+      <div class="pstep rv"><span class="pstep-no mono">1</span><p><b>You request.</b> Four fields below. A person replies within one business day to confirm the particulars.</p></div>
+      <div class="pstep rv" style="--d:1"><span class="pstep-no mono">2</span><p><b>We examine.</b> Your site and analytics setup go through the same checks we built for our first customer. No access to your accounts required for the baseline audit.</p></div>
+      <div class="pstep rv" style="--d:2"><span class="pstep-no mono">3</span><p><b>The file returns.</b> Findings, exhibits, and the repair plan, in writing, within five business days. What you do with it is entirely up to you.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CREDIBILITY ============ -->
+<section class="cred">
+  <div class="wrap cred-inner rv">
+    <p class="cred-quote">“When we cannot prove a booking came from your ads, we say&nbsp;so. That is the entire&nbsp;point.”</p>
+    <p class="cred-body">BookingBridge is an instrument built by <a href="https://getsecondstep.com">Second Step</a>. It runs live for a Kaua‘i luxury villa agency<sup class="mono">1</sup>, reconciling Google Ads spend against confirmed PMS bookings every fifteen minutes, counting only what it can prove. The audit is the same examination, performed once, for free, on your account.</p>
+  </div>
+</section>
+
+<!-- ============ REQUEST FORM ============ -->
+<section class="request" id="request">
+  <div class="wrap req-grid">
+    <div class="req-copy rv">
+      <p class="eyebrow">The request</p>
+      <h2>Find your leak before you spend another&nbsp;dollar.</h2>
+      <p>Four fields. A written file in five business days. Reviewed by a person, not an autoresponder.</p>
+    </div>
+    <form class="req-form rv" style="--d:1" id="leadForm" novalidate>
+      <div class="rf-field">
+        <label for="f-name">Name</label>
+        <input id="f-name" name="name" type="text" autocomplete="name" required>
+      </div>
+      <div class="rf-field">
+        <label for="f-email">Work email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required>
+        <span class="rf-err">A valid email is required to return the file.</span>
+      </div>
+      <div class="rf-field">
+        <label for="f-site">Company website</label>
+        <input id="f-site" name="website" type="text" inputmode="url" required>
+        <span class="rf-err">The audit is performed against your website.</span>
+      </div>
+      <div class="rf-field">
+        <label for="f-spend">Monthly Google Ads spend</label>
+        <select id="f-spend" name="spend" required>
+          <option value="" selected disabled>Select range</option>
+          <option>Under $2,000</option>
+          <option>$2,000 – $10,000</option>
+          <option>$10,000 – $30,000</option>
+          <option>Over $30,000</option>
+          <option>Not running ads yet</option>
+        </select>
+      </div>
+      <button class="cta cta-lg cta-full" type="submit">Request the free audit</button>
+      <p class="rf-fine mono">First-party only. Your details are used to prepare the file and for nothing else.</p>
+      <div class="rf-done" hidden>
+        <p class="rfd-badge mono">REQUEST LOGGED</p>
+        <h3>Received.</h3>
+        <p>A person will reply within one business day to confirm the particulars. The file follows within five.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="faq-grid">
+      <div class="qa rv"><h3>Is this not what GA4 already does?</h3><p>GA4 loses the click at your checkout hop and models what it does report. This audit measures the loss directly, first-party, and counts only what it can prove.</p></div>
+      <div class="qa rv" style="--d:1"><h3>Does it replace my marketing agency?</h3><p>No. It is the referee, not a player. The file states what the ads can be proven to have booked. Whoever runs them keeps running them.</p></div>
+      <div class="qa rv" style="--d:2"><h3>What is the catch?</h3><p>The audit is how we meet property managers who might later want the instrument running continuously. If the file is useful and nothing more, that is a fine outcome for both of us.</p></div>
+      <div class="qa rv" style="--d:3"><h3>Which booking systems do you support?</h3><p>Hostfully natively today; the examination itself works for any off-site checkout. Name yours in the request.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="wrap foot-inner">
+    <span class="mono">BookingBridge · built by <a href="https://getsecondstep.com">Second Step</a></span>
+    <span class="mono foot-note"><sup>1</sup> Client name withheld pending approval: <span class="redact">██████████</span></span>
+    <span class="mono">© 2026 Second Step</span>
+  </div>
+</footer>
+
+<script src="assets/lead.js"></script>
 </body>
 </html>
